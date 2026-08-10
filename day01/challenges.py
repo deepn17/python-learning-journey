@@ -24,3 +24,16 @@ final_bill = total_bill + tip_amount
 split_amount = final_bill / num_of_people
 
 print(f"Split among {num_of_people} a bill of ${total_bill:.2f} with a tip at {tip_percentage}% comes to ${split_amount:.2f} per person")
+
+"""
+3. Rectangle Calculator — Input length and width. Print the area (length * width) and perimeter (2 * (length + width)).
+"""
+length = float(input("Enter the length of the rectangle: "))
+width = float(input("Enter the width of the rectangle: "))
+
+area = length * width
+perimeter = 2 * (length + width)
+
+print(f"Area of the rectangle: {area:.2f}")
+print(f"Perimeter of the rectangle: {perimeter:.2f}")
+

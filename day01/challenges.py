@@ -60,3 +60,26 @@ distance_kms = float(input("Enter the distance in kilometers: "))
 convert_miles = distance_kms * 0.621371
 print(f"{distance_kms} Distance in kilometers converted to miles is {convert_miles:.2f} miles")
 
+
+"""
+6. Type Detective — Take three different input() calls without casting any of them. 
+Print their types using type(). All three will say <class 'str'>, even if you typed numbers. 
+This is the "aha" moment for why casting matters — input() always, always, always returns a string.
+"""
+birth_year = input("Enter your year of birth: ")
+age = input("Enter your current age: ")
+retirement_age = input("Enter the retirement age: ")
+
+print(type(birth_year))
+print(type(age))
+print(type(retirement_age))
+
+
+current_year = birth_year + age
+retirement_year = current_year + (retirement_age + age)
+
+print(f"Current Year: {current_year}")
+print(f"Retirement Year: {retirement_year}")
+
+
+

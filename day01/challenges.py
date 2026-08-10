@@ -51,3 +51,12 @@ print(f"Principal: {principal}")
 print(f"Interest Rate: {interest_rate}")
 print(f"Time in years: {time}")
 print(f"Simple Interest: {simple_interest:.2f}")
+
+
+"""
+5. Unit Converter — Input a distance in kilometers. Convert to miles (km * 0.621371). Print rounded to 2 decimal places.
+"""
+distance_kms = float(input("Enter the distance in kilometers: "))
+convert_miles = distance_kms * 0.621371
+print(f"{distance_kms} Distance in kilometers converted to miles is {convert_miles:.2f} miles")
+

@@ -37,3 +37,17 @@ perimeter = 2 * (length + width)
 print(f"Area of the rectangle: {area:.2f}")
 print(f"Perimeter of the rectangle: {perimeter:.2f}")
 
+"""
+4. Simple Interest Calculator — Input principal amount, rate of interest, and time in years. 
+Compute SI = (P * R * T) / 100. Print the result formatted to 2 decimal places.
+"""
+principal = float(input("Enter the principal amount: "))
+interest_rate = float(input("Enter the rate of interest: "))
+time = int(input("Enter the time in years: "))
+
+simple_interest = (principal * interest_rate * time) / 100
+print(f"\n--- Simple Interest Calculator ---")
+print(f"Principal: {principal}")
+print(f"Interest Rate: {interest_rate}")
+print(f"Time in years: {time}")
+print(f"Simple Interest: {simple_interest:.2f}")

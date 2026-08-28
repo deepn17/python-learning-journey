@@ -29,3 +29,29 @@ else:
 """
 The above leap year logic can be written in many different ways, but i chose the nested conditionals method.
 """
+
+# ============================================================
+# CHALLENGE 2: Simple Calculator
+# ============================================================
+# Ask for two numbers and an operator (+, -, *, /).
+# Perform the operation and print the result.
+# Handle division by zero gracefully.
+#
+# Concepts: if/elif chains, error handling
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+action = input("Enter the action you want to perform (+, -, *, /): ")
+
+if action == "+":
+    print(f"{num1 + num2:.3f}")
+elif action == "-":
+    print(f"{num1 - num2:.3f}")
+elif action == "*":
+    print(f"{num1 * num2:.3f}")
+elif action == "/":
+    if num2 == 0:
+        print("Divisor can't be zero.")
+    else:
+        print(f"{num1 / num2:.3f}")
+else:
+    print("Please select from the defined actionable parameters.")

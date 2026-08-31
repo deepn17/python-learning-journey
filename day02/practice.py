@@ -102,6 +102,21 @@ else:
 #   Not a triangle: fails the triangle inequality
 #     (each side must be less than the sum of the other two)
 
+len_side1 = int(input("Enter the length of side 1: "))
+len_side2 = int(input("Enter the length of side 2: "))
+len_side3 = int(input("Enter the length of side 3: "))
+
+if len_side1 <= 0 or len_side2 <= 0 or len_side3 <= 0:
+    print("Side lengths must be positive.")
+elif (len_side1 >= (len_side2 + len_side3)) or (len_side2 >= (len_side1 + len_side3)) or (len_side3 >= (len_side1 + len_side2)):
+    print("Not a triangle: fails the triangle inequality")
+else:
+    if len_side1 == len_side2 == len_side3:
+        print("It's an equilateral triangle.")
+    elif (len_side1 == len_side2) or (len_side1 == len_side3) or (len_side2 == len_side3):
+        print("It's an isosceles triangle.")
+    else:
+        print("It's an Scalene triangle.")
 
 # ============================================================
 # PRACTICE 6: Time of Day Greeting
@@ -112,3 +127,17 @@ else:
 #   17-20:   "Good Evening!"
 #   21-4:    "Good Night!"
 # Handle invalid hours.
+
+time_of_day = int(input("Enter the time of the day: "))
+
+if time_of_day < 0 or time_of_day > 23:
+    print("Invalid hour. Enter a value between 0 and 23.")
+else:
+    if 5 <= time_of_day < 12:
+        print("Good Morning!")
+    elif time_of_day < 17:
+        print("Good Afternoon!")
+    elif time_of_day < 21:
+        print("Good Evening!")
+    else:
+        print("Good Night!")

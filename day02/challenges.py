@@ -169,3 +169,4 @@ else:
         print("It's Saturday.")
     else:
         print("It's Sunday.")
+    print("Please select from the defined actionable parameters.")

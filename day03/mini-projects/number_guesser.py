@@ -74,3 +74,29 @@ if guessed_correctly:
 else:
     print(f"Out of guesses! The number was {secret}.")
     print("Better luck next time.")
+
+# additional feature
+print("\n--- Number Line ---")
+for i in range(1, max_num + 1):
+    if i == secret:
+        print("*", end=" ")
+    else:
+        print(".", end=" ")
+print()
+
+# play again
+print("\n--- Play again ---")
+while True:
+    again = input("Play again? (yes/no): ").lower().strip()
+    if again in ("yes", "y"):
+        print("Restart the program to play again!")
+        break
+    elif again in ("no", "n"):
+        print("Thanks for playing!")
+        break
+    else:
+        print("Please answer yes or no.")
+
+print("\n" + "=" * 60)
+print("  Thanks for playing the Number Guesser!")
+print("=" * 60)

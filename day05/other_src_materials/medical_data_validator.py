@@ -39,9 +39,12 @@ def find_invalid_records(patient_id, age, gender, diagnosis, medications, last_v
     constraints = {
         'patient_id': isinstance(patient_id, str) and re.fullmatch(r'p\d+', patient_id, re.IGNORECASE),
         'age': isinstance(age, int) and age >= 18,
-        'gender': isinstance(gender, str) and gender.lower() in ('male', 'female')
+        'gender': isinstance(gender, str) and gender.lower() in ('male', 'female'),
+        'diagnosis': isinstance(diagnosis, str) or diagnosis is None,
+        'medications': isinstance(medications, list) and all([isinstance(i, str) for i in medications]),
+        'last_visit_id': isinstance(last_visit_id, str) and re.fullmatch(r'v\d+', last_visit_id, re.IGNORECASE),
     }
-    return constraints
+    return [key for key, value in constraints.items() if not value]
 
 def validate(data):
     is_sequence = isinstance(data, (list, tuple))
@@ -62,6 +65,13 @@ def validate(data):
             print(f'Invalid format: {dictionary} at position {index} has missing and/or invalid keys.')
             is_invalid = True
 
+        invalid_records = find_invalid_records(**dictionary)
+
+        for key in invalid_records:
+            print(f'Unexpected format {key}: {dictionary[key]} at position {index}.')
+
+            is_invalid = True
+
     if is_invalid:
         return False
     
@@ -72,6 +82,5 @@ def validate(data):
 
 print(validate(medical_records))
 
-print(find_invalid_records(**medical_records[0]))
 
 

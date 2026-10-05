@@ -1,0 +1,34 @@
+1. Declare a variable named medical_records and assign it an empty list.
+2. Add a dictionary with a key patient_id and value of the string P1001 to the medical_records list.
+3. Add a key age with the value of the integer 34 and a key gender with the value of the string Female to your dictionary.
+4. Complete the dictionary by adding the following three key-value pairs:
+    - A key diagnosis with the value of Hypertension
+    - A key medications with the value of the list ['Lisinopril']
+    - A key last_visit_id with the value of V2301.
+5. Similar to step 2, 3, 4, add more patients to the list.
+6. write the function to validate the data set. Create a function named validate with a single parameter data.
+   You want to ensure that your data is either a list or a tuple. Therefore, within the validate function, declare a variable named is_sequence and assign it a call to isinstance. Pass in data as the first argument and a tuple containing list and tuple as the second argument.
+7. Create an if statement. For its condition, use the not operator to negate is_sequence. Within the if     statement, print Invalid format: expected a list or tuple. and return False.
+8. Right after your if statement, declare a variable named is_invalid and set it to False. Later on, you'll use it as a flag to run a conditional statement.
+9. Create a for loop that iterates over data. Use the enumerate function to get both the index and the item in data at each iteration. Use index and dictionary as iteration variables.For now use pass to fill the loop body.
+10. Inside your for loop, if the item in dictionary is not an instance of dict, print Invalid format: expected a dictionary at position <index>. (where <index> should be replaced by the current index) and set is_invalid to True.
+11. After your for loop, still inside the validate function, create an if statement. If is_invalid is True, return False.
+12. After the if statement, print the string Valid format.. Then return True.
+13. To test the first if statement of your function, turn medical_records into a string. You should see Invalid format: expected a list or tuple. printed to the terminal. --> convert the list to str by str(list)
+14. To test the second conditional statement, add two items of your choice that are not dictionaries at the end of the medical_records list. You should see two validation messages printed to the terminal.
+15. Inside the validate function, use the set() constructor to create a set from the following list of keys that each dictionary should have: ['patient_id', 'age', 'gender', 'diagnosis', 'medications', 'last_visit_id']. Assign the set to a variable named key_set.
+16. Inside your for loop, after the first if statement, create an if statement that runs when the set of keys from the current dictionary is different from key_set. This is to ensure that no missing or invalid keys are present in the dictionary.Within the new if statement, print Invalid format: <dictionary> at position <index> has missing and/or invalid keys. (where <dictionary> and <index> should be replaced by the dictionary and index at the current iteration) and set is_invalid to True.
+17. To test that everything is working correctly, try to comment out the age key from the first dictionary in medical_records.You should see a validation message appear in the terminal.
+18. Now you are going to make the validation more granular. Create a function named find_invalid_records to find invalid values in a dictionary. Give it the following parameters: patient_id, age, gender, diagnosis, medications, last_visit_id.Inside your new function, create an empty dictionary named constraints. Then, return constraints from your new function.
+19. At the bottom of your code, print the result of calling the find_invalid_records function. For its arguments, use the ** operator to unpack medical_records[0].
+20. The constraints dictionary will contain each key you should expect to have in the data to validate. The value associated to each of them will indicate the result of the validation.Add the key patient_id to the constraints dictionary. For its value, use a call to isinstance passing in patient_id and str as the arguments.
+21. As you wrote in the previous step, patient_id should be a string. You want to check that it also has a specific pattern though.For that, you are going to use a regular expression. Therefore, at the top of your code, use the import keyword to import the re module.
+22. Call re.search with the string p as the first argument and patient_id as the second argument. Use the and operator to add the function call as a second expression to the value of your patient_id key.
+23. Add re.IGNORECASE as the third argument to your re.search call. This will make your regex search case insensitive.After that, you'll see None replaced by the match object <re.Match object; span=(0, 1), match='P'>, where match indicates the match and span indicates its location in the string.
+24. After the letter p, patient_id should have a series of numbers. So, modify your regex pattern to have the character p followed by the special sequence \d.
+25. Quantifiers are used in regular expressions to specify how many times a character can be repeated. For example, the + character matches the previous character one or more times:So append a + quantifier to your regex pattern to match one or more digits.
+26. Now that your regex matches the letter p followed by one or more digits, one last thing you need to check is that no extra characters are found in the string.To do that you can make use of another function from the re module. The fullmatch function returns a match object when the regex pattern matches the entire string and None otherwise.Replace the search call with a fullmatch call keeping the same arguments.
+27. Next, you want to verify that age is an integer. So add another key age to the constraints dictionary. For its value, call isinstance passing age and int as its arguments.
+28. age should not only be a integer, it should be a positive integer greater than or equal to 18.Using the and operator, add a second expression to the value of the age key to check that.
+29. Add another key gender to the constraints dictionary. Following the format of the expression you wrote in the previous steps, verify that gender is a string. Then, use the and operator to check that the lowercase gender is in ('male', 'female').
+30. The is and is not operators check whether two values refer to the same object. This is called an identity comparison. You can use is None to check whether a value is the None object, and is not None to check whether it is not the None object.Now add a key diagnosis to the constraints dictionary. For its value, write an expression that checks that diagnosis is either an instance of str or is None.

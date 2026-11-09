@@ -563,3 +563,84 @@ def show_args(**info):
     """
     for key, value in info.items():
         print(f"{key}: {value}")
+
+# 22 . Write a function called is_prime, which checks if a number is prime.
+def is_prime(n):
+    """
+    Checks whether a given integer is a prime number. 
+                        
+    Args:
+        n (int): The integer to check for primality.
+                        
+    Returns:
+        bool: True if the number is prime, otherwise False.
+    """
+    # Numbers less than or equal to 1 are not prime
+    if n <= 1:
+        return False
+    # 2 is the only even prime number
+    if n == 2:
+        return True
+    # Exclude all other even numbers
+    if n % 2 == 0:
+        return False
+    # Check odd factors up to the square root of n
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+
+    return True
+
+# 23. Write a functions which checks if all items are unique in the list.
+def all_unique(numbers):
+    """
+    Checks whether all elements in a list are unique. 
+                        
+    Args:
+        numbers (list): A list of elements.
+                        
+    Returns:
+        bool: True if all elements are unique, otherwise False.
+    """
+    for n in numbers:
+        if numbers.count(n) > 1:
+            return False
+
+    return True
+
+    
+# 24. Write a function which checks if all the items of the list are of the same data type.
+def same_data_type(items):
+    """
+    Checks whether all elements in a list have the same data type.
+
+    Args:
+        items (list): A list of elements.
+
+    Returns:
+        bool: True if all elements have the same data type,
+              otherwise False.
+    """
+    if not items:
+        return True
+
+    first_type = type(items[0])
+
+    for item in items:
+        if type(item) != first_type:
+            return False
+
+    return True
+
+# 25. Write a function which check if provided variable is a valid python variable
+def is_valid_variable(variable):
+    """
+    Checks whether a string is a valid Python variable name.
+
+    Args:
+        variable (str): The variable name to validate.
+
+    Returns:
+        bool: True if valid, otherwise False.
+    """
+    return variable.isidentifier() and not variable.iskeyword()

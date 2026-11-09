@@ -325,3 +325,241 @@ def sum_of_even(n):
 print(sum_of_even(5))
 print(sum_of_even(10))
 print(sum_of_even(100))
+
+# 16. Declare a function named evens_and_odds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
+
+def evens_and_odds(num):
+    """
+    Count the number of even and odd integers from 0 to the given number.
+
+    Args:
+        num (int): A positive integer representing the upper limit.
+
+    Returns:
+        str: A formatted string containing the count of even and odd numbers.
+    """
+    even_count = 0
+    odd_count = 0
+
+    for i in range(num + 1):
+        if i % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+
+    return f"The number of odds are {odd_count}.\nThe number of evens are {even_count}."
+
+
+print(evens_and_odds(100))
+
+# 17. Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+
+def factorial(n):
+    """
+    Calculate the factorial of a given whole number.
+
+    Args:
+        n (int): A non-negative integer whose factorial is to be calculated.
+
+    Returns:
+        int: The factorial of the given number.
+    """
+    result = 1
+
+    for i in range(1, n + 1):
+        result *= i
+
+    return result
+
+print(factorial(5)) 
+print(factorial(4)) 
+print(factorial(0))
+
+# 18. Call your function is_empty, it takes a parameter and it checks if it is empty or not
+def is_empty(items = None):
+    """
+    Check whether the given parameter is empty or falsy.
+
+    Args:
+        items: The value to be checked. Defaults to None.
+
+    Returns:
+        bool: True if the value is falsy (None, empty collection, 0, False, etc.),
+              otherwise False.
+    """
+    if not items:
+        return True
+    else:
+        return False
+
+print(is_empty())
+print(is_empty([]))
+print(is_empty(""))
+print(is_empty([1, 2, 3]))
+
+# 19. Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+def calulate_mean(numbers):
+    """
+    Calculates the mean for a given list of numbers
+    
+    Args:
+        items: A list of numbers for which the mean is to be calculated
+    
+    Returns:
+        The mean from the list of given numbers
+    """
+    return f"Mean of the numbers is: {sum(numbers) / len(numbers)}"
+
+def calculate_median(numbers):
+    """
+    Calculates the median for a given list of numbers
+    
+    Args:
+        items: A list of numbers for which the median is calculated
+    
+    Returns:
+        The median from the list of given numbers.
+    """
+    sorted_numbers = sorted(numbers)
+    length = len(numbers)
+
+    if length % 2 == 0:
+        first_element = sorted_numbers[length // 2 - 1]
+        second_element = sorted_numbers[length // 2]
+        median = (first_element + second_element) / 2
+
+        return median
+    else:
+        median = sorted_numbers[length // 2]
+
+        return median
+
+def calculate_mode(numbers):
+    """
+    Calculates the mode for a given list of numbers
+        
+    Args:
+        items: A list of numbers for which the mode is calculated
+        
+    Returns:
+        The mode from the list of given numbers.
+    """
+    max_count = 0
+    modes = []
+
+    for n in numbers:
+        count = numbers.count(n)
+
+        if count > max_count:
+            max_count = count
+            modes = [n]
+        elif count == max_count and n not in modes:
+            modes.append(n)
+
+    if max_count == 1:
+        return "No Mode Exists"
+
+    return modes
+
+
+def calculate_range(numbers):
+    """
+    Calculates the range for a given list of numbers. Max number in range - Min number in range
+        
+    Args:
+        numbers: A list of numbers for which the range is calculated
+        
+    Returns:
+        The range for the list of given numbers.
+    """
+    max_num = numbers[0]
+    min_num = numbers[0]
+
+    for n in numbers:
+        if n > max_num:
+            max_num = n
+        if n < min_num:
+            min_num = n
+
+    range_numbers = max_num - min_num
+
+    return range_numbers
+
+
+def calculated_range(numbers):
+    """
+    Calculates the range for a given list of numbers. Max number in range - Min number in range
+        
+    Args:
+        numbers: A list of numbers for which the range is calculated
+        
+    Returns:
+        The range for the list of given numbers.
+    """
+    sorted_numbers = sorted(numbers)
+    max_num = sorted_numbers[0]
+    min_num = sorted_numbers[0]
+
+    return max_num - min_num
+
+def calculate_variance(numbers):
+    """
+    Calculates the variance for a given list of numbers. 
+            
+    Args:
+        numbers: A list of numbers for which the variance is calculated
+            
+    Returns:
+        The variance for the list of given numbers.
+    """
+    mean = calulate_mean(numbers)
+    squared_differences = []
+
+    for n in numbers:
+        difference = n - mean
+        squared_differences.append(difference ** 2)
+
+    return sum(squared_differences) / len(numbers)
+
+def calculate_std(numbers):
+    """
+    Calculates the standard deviation for a given list of numbers. 
+            
+    Args:
+        numbers: A list of numbers for which the standard deviation is calculated
+            
+    Returns:
+        The standard deviation for the list of given numbers.
+    """
+    variance = calculate_variance(numbers)
+    return variance ** 0.5
+
+# 20. Write a function called greet which takes a default argument, name. If no argument is supplied it should print "Hello, Guest!", otherwise it should greet the person by name.
+def greet(name="Guest"):
+    """
+    Returns a greeting message for the given name. 
+                
+    Args:
+        name (str): The name of the person to greet. Defaults to "Guest".
+                
+    Returns:
+        str: A greeting message.
+    """
+    if not name:
+        return "Hello, Guest!"
+    else:
+        return f"Hello, {name}!"
+
+# 21. Create a function called show_args to take an arbitrary number of named arguments and print their names and values.
+def show_args(**info):
+    """
+    Prints the names and values of arbitrary keyword arguments. 
+                    
+    Args:
+        **info (dict): An arbitrary number of named arguments.
+                    
+    Returns:
+        None
+    """
+    for key, value in info.items():
+        print(f"{key}: {value}")

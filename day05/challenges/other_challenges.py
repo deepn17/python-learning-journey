@@ -266,3 +266,6 @@ def median(numbers: list[float]) -> float:
         median = sorted_numbers[length // 2]
 
         return median
+
+print(median([1, 2, 3, 4, 5]))
+print(median([1, 2, 3, 4]))

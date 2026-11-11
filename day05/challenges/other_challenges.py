@@ -148,3 +148,121 @@ def stats(numbers):
     }
 
     return stats_dict
+
+# ============================================================
+# CHALLENGE 7: Area Calculator
+# ============================================================
+# GOAL: Write functions area_circle(r), area_rectangle(w, h), and
+#       area_triangle(b, h). Use math.pi for the circle.
+# HINTS: import math, return the result
+# EXAMPLE: area_rectangle(2, 3) → 6
+
+import math
+
+def area_circle(r):
+    return math.pi * r * r
+
+def area_rectangle(w, h):
+    return w * h
+
+def area_triangle(b, h):
+    return (b * h) / 2
+
+
+print(f"Area of circle: {area_circle(5):.2f}")
+print(f"Area of rectangle: {area_rectangle(5, 10):.2f}")
+print(f"Area of triangle: {area_triangle(5, 10):.2f}")
+
+# ============================================================
+# CHALLENGE 8: Default Parameter
+# ============================================================
+# GOAL: Write a function apply_discount(price, rate=0.1) that returns
+#       the discounted price. Call it with and without the rate.
+# HINTS: default parameter, return
+# EXAMPLE: apply_discount(100) → 90.0, apply_discount(100, 0.25) → 75.0
+
+def apply_discount(price, rate=0.1):
+    discount = price * rate
+    discounted_price = price - discount
+    return discounted_price
+
+print(f"The discounted rate without the rate {apply_discount(100):.1f}")
+print(f"The discounted rate with the rate {apply_discount(100, 0.25):.1f}")
+
+
+# ============================================================
+# CHALLENGE 9: *args Sum
+# ============================================================
+# GOAL: Write a function sum_all(*args) that returns the sum of all
+#       arguments, and returns 0 if called with no arguments.
+# HINTS: *args, sum()
+# EXAMPLE: sum_all(1, 2, 3) → 6, sum_all() → 0
+
+def sum_all(*args):
+    return sum(args)
+
+print(sum_all(1, 2, 3))
+print(sum_all())
+
+# ============================================================
+# CHALLENGE 10: **kwargs Filter
+# ============================================================
+# GOAL: Write a function filter_kwargs(**kwargs) that returns a new
+#       dict containing only the key-value pairs where the value is
+#       a string.
+# HINTS: **kwargs, isinstance(value, str)
+# EXAMPLE: filter_kwargs(a=1, b="hi", c=3.0, d="yo") → {"b": "hi", "d": "yo"}
+
+def filter_kwargs(**kwargs):
+
+    filtered_dict = {}
+
+    for key, value in kwargs.items():
+        if isinstance(value, str):
+            filtered_dict[key] = value
+
+    return filtered_dict
+
+print(filter_kwargs(a=1, b="hi", c=3.0, d="yo"))
+
+# ============================================================
+# CHALLENGE 11: map/filter/lambda
+# ============================================================
+# GOAL: Given a list of numbers, use map() to square each, then
+#       filter() to keep only those > 10. Use lambdas.
+# HINTS: map(lambda...), filter(lambda...), list()
+# EXAMPLE: [1, 2, 3, 4, 5] → squares [1,4,9,16,25] → >10 → [16, 25]
+numbers = [1, 2, 3, 4, 5]
+
+squares = list(map(lambda x: x**2, numbers))
+filtered_numbers = list(filter(lambda x: x>10, squares))
+
+print("Original numbers", numbers)
+print("Squared numbers", squares)
+print("Numbers greater than 10", filtered_numbers)
+
+
+# ============================================================
+# CHALLENGE 12: Type-Hinted Function
+# ============================================================
+# GOAL: Write a type-hinted function median(numbers: list[float]) -> float
+#       that returns the median (middle value) of a sorted list.
+# HINTS: sort a copy, handle even/odd length
+# EXAMPLE: median([1, 2, 3, 4, 5]) → 3.0, median([1, 2, 3, 4]) → 2.5
+
+def median(numbers: list[float]) -> float:
+
+    sorted_numbers = sorted(numbers)
+    length = len(numbers)
+
+    if length % 2 == 0:
+        first = length // 2 - 1
+        second = length // 2
+
+        median = (sorted_numbers[first] + sorted_numbers[second]) / 2
+
+        return median
+    else:
+        median = sorted_numbers[length // 2]
+
+        return median

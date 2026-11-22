@@ -293,3 +293,16 @@ class TestCompose(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+
+# An Example for inner function
+def outer():
+    def inner():
+        return "Hello"
+
+    return inner
+
+result = outer()
+print(result)
+print(result())

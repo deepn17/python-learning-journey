@@ -84,3 +84,13 @@ def calculate_any_sum(*args):
 # calculate_any_sum(1, "2")	TypeError
 # execute_calculation("add", (2, 3))	TypeError
 # execute_calculation(calculate_sum, (2,))	ValueError
+
+
+# A sample exercise for value unpacking.
+def process(a, b, c):
+    return a + b + c
+
+values = [10, 20, 30]
+
+# print(process(values))
+print(process(*values))
